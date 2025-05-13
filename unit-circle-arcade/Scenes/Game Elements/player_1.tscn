@@ -1,0 +1,24 @@
+[gd_scene load_steps=3 format=3 uid="uid://cv4hdwptyiy1c"]
+
+[ext_resource type="Script" uid="uid://clxpnwydijggj" path="res://Scripts/player.gd" id="1_2mvbs"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8wg3u"]
+size = Vector2(20, 40)
+
+[node name="Player 1" type="CharacterBody2D"]
+script = ExtResource("1_2mvbs")
+player = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_8wg3u")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = -10.0
+offset_top = -20.0
+offset_right = 10.0
+offset_bottom = 20.0
+color = Color(0.143709, 0.378592, 0.999999, 1)
+
+[node name="Coyote Time" type="Timer" parent="."]
+wait_time = 0.2
+one_shot = true

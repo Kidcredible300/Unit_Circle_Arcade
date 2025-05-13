@@ -1,0 +1,33 @@
+[gd_scene load_steps=6 format=3 uid="uid://12yplci8ufna"]
+
+[ext_resource type="PackedScene" uid="uid://qlb0brdob7ra" path="res://Scenes/Game Elements/platform.tscn" id="1_517og"]
+[ext_resource type="Script" uid="uid://v565jhabrexc" path="res://Scripts/wrong_platform.gd" id="2_h7q6o"]
+[ext_resource type="FontFile" uid="uid://c2v7745l6gsbi" path="res://Assets/rainyhearts.ttf" id="3_xf0ag"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_jdph0"]
+font = ExtResource("3_xf0ag")
+font_size = 64
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_h08tr"]
+size = Vector2(300, 138.399)
+
+[node name="Wrong Platform" instance=ExtResource("1_517og")]
+script = ExtResource("2_h7q6o")
+
+[node name="Description" type="Label" parent="." index="1"]
+layout_mode = 0
+offset_top = -146.0
+offset_right = 300.0
+offset_bottom = -82.0
+text = "pi = 4.521"
+label_settings = SubResource("LabelSettings_jdph0")
+horizontal_alignment = 1
+
+[node name="Area2D" type="Area2D" parent="." index="2"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" index="0"]
+position = Vector2(150, -73.087)
+shape = SubResource("RectangleShape2D_h08tr")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

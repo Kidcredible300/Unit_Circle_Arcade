@@ -1,0 +1,97 @@
+[gd_scene load_steps=9 format=3 uid="uid://c6nqwxuf8wpg7"]
+
+[ext_resource type="Script" uid="uid://dqxfy0jnhkta2" path="res://Scripts/Game States/title_screen.gd" id="1_6h6j2"]
+[ext_resource type="FontFile" uid="uid://c2v7745l6gsbi" path="res://Assets/rainyhearts.ttf" id="2_dnc61"]
+[ext_resource type="Texture2D" uid="uid://kp51q0jojao3" path="res://Assets/button_graphic.png" id="3_7mben"]
+[ext_resource type="Material" uid="uid://blqcp1es0y8a5" path="res://Shader Materials/red.material" id="4_hipaf"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_tik27"]
+font = ExtResource("2_dnc61")
+font_size = 128
+
+[sub_resource type="LabelSettings" id="LabelSettings_muqmf"]
+font = ExtResource("2_dnc61")
+font_size = 80
+font_color = Color(0, 0, 1, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_3g50t"]
+font = ExtResource("2_dnc61")
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_5vn3k"]
+line_spacing = 0.0
+font = ExtResource("2_dnc61")
+
+[node name="Title Screen" type="Node2D"]
+script = ExtResource("1_6h6j2")
+
+[node name="Label" type="Label" parent="."]
+offset_left = -476.0
+offset_top = -500.0
+offset_right = 476.0
+offset_bottom = -380.0
+text = "Unit Circle Combat"
+label_settings = SubResource("LabelSettings_tik27")
+
+[node name="Description" type="Label" parent="."]
+offset_left = -855.0
+offset_top = -378.0
+offset_right = 855.0
+offset_bottom = -258.0
+text = "Versus Game - Do you know Trig AND Platforming?
+Game by Robert Kurc"
+label_settings = SubResource("LabelSettings_muqmf")
+horizontal_alignment = 1
+
+[node name="Start" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(0, 302)
+scale = Vector2(5, 5)
+texture = ExtResource("3_7mben")
+
+[node name="Label" type="Label" parent="Start"]
+offset_left = -18.0
+offset_top = -8.2
+offset_right = 22.0
+offset_bottom = 8.8
+scale = Vector2(0.9, 0.9)
+text = "Start"
+label_settings = SubResource("LabelSettings_3g50t")
+horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="P1 Ready" type="Sprite2D" parent="."]
+material = ExtResource("4_hipaf")
+position = Vector2(-684, 66)
+scale = Vector2(5, 5)
+texture = ExtResource("3_7mben")
+
+[node name="Label" type="Label" parent="P1 Ready"]
+offset_left = -22.5
+offset_top = -15.0
+offset_right = 22.5
+offset_bottom = 15.0
+text = "P1
+Ready?"
+label_settings = SubResource("LabelSettings_5vn3k")
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="P2 Ready" type="Sprite2D" parent="."]
+material = ExtResource("4_hipaf")
+position = Vector2(684, 66)
+scale = Vector2(5, 5)
+texture = ExtResource("3_7mben")
+
+[node name="Label" type="Label" parent="P2 Ready"]
+offset_left = -22.5
+offset_top = -15.0
+offset_right = 22.5
+offset_bottom = 15.0
+text = "P2
+Ready?"
+label_settings = SubResource("LabelSettings_5vn3k")
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true

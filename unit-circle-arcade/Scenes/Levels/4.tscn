@@ -1,0 +1,163 @@
+[gd_scene load_steps=12 format=3 uid="uid://c5yvk47qtdovx"]
+
+[ext_resource type="Script" uid="uid://gmog2wvq7bgn" path="res://Scripts/Base Classes/game_state.gd" id="1_dewmq"]
+[ext_resource type="FontFile" uid="uid://c2v7745l6gsbi" path="res://Assets/rainyhearts.ttf" id="2_u53iy"]
+[ext_resource type="Script" uid="uid://b3g2bet4qgkor" path="res://Scripts/answer_platforms.gd" id="3_yn2tr"]
+[ext_resource type="PackedScene" uid="uid://12yplci8ufna" path="res://Scenes/Game Elements/wrong_platform.tscn" id="4_d4aqs"]
+[ext_resource type="PackedScene" uid="uid://cctls2bd4j6fg" path="res://Scenes/Game Elements/right_platform.tscn" id="5_vld7j"]
+[ext_resource type="PackedScene" uid="uid://qlb0brdob7ra" path="res://Scenes/Game Elements/platform.tscn" id="6_7llea"]
+[ext_resource type="PackedScene" uid="uid://cv4hdwptyiy1c" path="res://Scenes/Game Elements/player_1.tscn" id="7_fc0xr"]
+[ext_resource type="PackedScene" uid="uid://culqtwnr4oo01" path="res://Scenes/Game Elements/player_2.tscn" id="8_tmqa2"]
+[ext_resource type="Script" uid="uid://cthe164r500rt" path="res://Scripts/respawn_trigger.gd" id="9_4y8h0"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_0bxpv"]
+font = ExtResource("2_u53iy")
+font_size = 128
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_os6yw"]
+
+[node name="secant" type="Node2D"]
+script = ExtResource("1_dewmq")
+id = 1
+
+[node name="Label" type="Label" parent="."]
+offset_left = -960.0
+offset_top = -500.0
+offset_right = 960.0
+offset_bottom = -380.0
+text = "sec(x) = ?"
+label_settings = SubResource("LabelSettings_0bxpv")
+horizontal_alignment = 1
+
+[node name="Answer Platforms" type="Node2D" parent="."]
+script = ExtResource("3_yn2tr")
+
+[node name="Wrong Platform" parent="Answer Platforms" instance=ExtResource("4_d4aqs")]
+offset_left = -827.0
+offset_top = -314.0
+offset_right = -527.0
+offset_bottom = -254.0
+scale = Vector2(0.6, 0.6)
+answer = "tan(sin(x))"
+
+[node name="Wrong Platform2" parent="Answer Platforms" instance=ExtResource("4_d4aqs")]
+offset_left = 7.0
+offset_top = 410.0
+offset_right = 307.0
+offset_bottom = 470.0
+scale = Vector2(0.6, 0.6)
+answer = "1/sin(x)"
+
+[node name="Wrong Platform4" parent="Answer Platforms" instance=ExtResource("4_d4aqs")]
+offset_left = 751.0
+offset_top = 177.0
+offset_right = 1051.0
+offset_bottom = 237.0
+scale = Vector2(0.6, 0.6)
+answer = "sin(x)*cos(x)"
+
+[node name="Wrong Platform3" parent="Answer Platforms" instance=ExtResource("4_d4aqs")]
+offset_left = -850.0
+offset_top = 315.0
+offset_right = -550.0
+offset_bottom = 375.0
+scale = Vector2(0.6, 0.6)
+answer = "cos(x)*tan(x)"
+
+[node name="Right Platform" parent="Answer Platforms" instance=ExtResource("5_vld7j")]
+offset_left = 612.0
+offset_top = -104.0
+offset_right = 912.0
+offset_bottom = -44.0
+scale = Vector2(0.6, 0.6)
+answer = "1/cos(x)"
+
+[node name="Platforms" type="Node2D" parent="."]
+
+[node name="Platform2" parent="Platforms" instance=ExtResource("6_7llea")]
+offset_left = -896.0
+offset_top = 12.0
+offset_right = -596.0
+offset_bottom = 72.0
+scale = Vector2(1, 0.64)
+metadata/_edit_use_anchors_ = true
+
+[node name="Platform3" parent="Platforms" instance=ExtResource("6_7llea")]
+offset_left = -620.0
+offset_top = -224.0
+offset_right = -320.0
+offset_bottom = -164.0
+scale = Vector2(0.542016, 0.722968)
+
+[node name="Platform11" parent="Platforms" instance=ExtResource("6_7llea")]
+offset_left = -406.0
+offset_top = -79.0
+offset_right = -106.0
+offset_bottom = -19.0
+scale = Vector2(0.542016, 0.722968)
+
+[node name="Platform6" parent="Platforms" instance=ExtResource("6_7llea")]
+offset_left = -407.0
+offset_top = 145.0
+offset_right = -107.0
+offset_bottom = 205.0
+scale = Vector2(0.542016, 0.722968)
+
+[node name="Platform10" parent="Platforms" instance=ExtResource("6_7llea")]
+offset_left = 330.0
+offset_top = -145.0
+offset_right = 630.0
+offset_bottom = -85.0
+scale = Vector2(0.542016, 0.722968)
+
+[node name="Platform7" parent="Platforms" instance=ExtResource("6_7llea")]
+offset_left = 264.0
+offset_top = 142.0
+offset_right = 564.0
+offset_bottom = 202.0
+scale = Vector2(0.542016, 0.722968)
+
+[node name="Platform8" parent="Platforms" instance=ExtResource("6_7llea")]
+offset_left = -601.0
+offset_top = 216.0
+offset_right = -301.0
+offset_bottom = 276.0
+scale = Vector2(0.542016, 0.722968)
+
+[node name="Platform9" parent="Platforms" instance=ExtResource("6_7llea")]
+offset_left = -210.0
+offset_top = 270.0
+offset_right = 90.0
+offset_bottom = 330.0
+scale = Vector2(0.542016, 0.722968)
+
+[node name="Platform4" parent="Platforms" instance=ExtResource("6_7llea")]
+offset_left = 4.99994
+offset_top = -73.0
+offset_right = 305.0
+offset_bottom = -13.0
+scale = Vector2(0.542016, 0.722968)
+
+[node name="Platform5" parent="Platforms" instance=ExtResource("6_7llea")]
+offset_left = 474.0
+offset_top = 248.0
+offset_right = 774.0
+offset_bottom = 308.0
+scale = Vector2(0.542016, 0.722968)
+
+[node name="Player 1" parent="." instance=ExtResource("7_fc0xr")]
+position = Vector2(-800, -41)
+
+[node name="Player 2" parent="." instance=ExtResource("8_tmqa2")]
+position = Vector2(-700, -41)
+
+[node name="Respawn Trigger" type="Area2D" parent="."]
+position = Vector2(0, 540)
+script = ExtResource("9_4y8h0")
+respawn_pos = Vector2(-750, -100)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Respawn Trigger"]
+position = Vector2(0, 540)
+shape = SubResource("WorldBoundaryShape2D_os6yw")
+
+[connection signal="body_entered" from="Respawn Trigger" to="Respawn Trigger" method="_on_body_entered"]

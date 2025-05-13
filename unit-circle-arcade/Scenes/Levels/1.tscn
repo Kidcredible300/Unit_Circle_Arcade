@@ -1,0 +1,184 @@
+[gd_scene load_steps=12 format=3 uid="uid://c84s3bhly52we"]
+
+[ext_resource type="Script" uid="uid://gmog2wvq7bgn" path="res://Scripts/Base Classes/game_state.gd" id="1_3md8o"]
+[ext_resource type="FontFile" uid="uid://c2v7745l6gsbi" path="res://Assets/rainyhearts.ttf" id="2_qrysc"]
+[ext_resource type="Script" uid="uid://b3g2bet4qgkor" path="res://Scripts/answer_platforms.gd" id="3_wla3b"]
+[ext_resource type="PackedScene" uid="uid://12yplci8ufna" path="res://Scenes/Game Elements/wrong_platform.tscn" id="4_jbhxb"]
+[ext_resource type="PackedScene" uid="uid://cctls2bd4j6fg" path="res://Scenes/Game Elements/right_platform.tscn" id="5_5loy5"]
+[ext_resource type="PackedScene" uid="uid://qlb0brdob7ra" path="res://Scenes/Game Elements/platform.tscn" id="6_l88yk"]
+[ext_resource type="PackedScene" uid="uid://cv4hdwptyiy1c" path="res://Scenes/Game Elements/player_1.tscn" id="7_eg17s"]
+[ext_resource type="PackedScene" uid="uid://culqtwnr4oo01" path="res://Scenes/Game Elements/player_2.tscn" id="8_auora"]
+[ext_resource type="Script" uid="uid://cthe164r500rt" path="res://Scripts/respawn_trigger.gd" id="9_haf4b"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_0bxpv"]
+font = ExtResource("2_qrysc")
+font_size = 128
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_os6yw"]
+
+[node name="cos equal cos" type="Node2D"]
+script = ExtResource("1_3md8o")
+id = 1
+
+[node name="Label" type="Label" parent="."]
+offset_left = -960.0
+offset_top = -500.0
+offset_right = 960.0
+offset_bottom = -380.0
+text = "cos(π/6) = ?"
+label_settings = SubResource("LabelSettings_0bxpv")
+horizontal_alignment = 1
+
+[node name="Answer Platforms" type="Node2D" parent="."]
+script = ExtResource("3_wla3b")
+
+[node name="Wrong Platform" parent="Answer Platforms" instance=ExtResource("4_jbhxb")]
+offset_left = -877.0
+offset_top = -134.0
+offset_right = -577.0
+offset_bottom = -74.0
+scale = Vector2(0.6, 0.6)
+answer = "sin(4π/3)"
+
+[node name="Wrong Platform2" parent="Answer Platforms" instance=ExtResource("4_jbhxb")]
+offset_left = -608.0
+offset_top = -319.0
+offset_right = -308.0
+offset_bottom = -259.0
+scale = Vector2(0.6, 0.6)
+answer = "cos(5π/6)"
+
+[node name="Wrong Platform4" parent="Answer Platforms" instance=ExtResource("4_jbhxb")]
+offset_left = 639.0
+offset_top = -177.0
+offset_right = 939.0
+offset_bottom = -117.0
+scale = Vector2(0.6, 0.6)
+answer = "tan(π/4)"
+
+[node name="Wrong Platform3" parent="Answer Platforms" instance=ExtResource("4_jbhxb")]
+offset_left = -82.0
+offset_top = -167.0
+offset_right = 218.0
+offset_bottom = -107.0
+scale = Vector2(0.6, 0.6)
+answer = "cos(7π/6)"
+
+[node name="Right Platform" parent="Answer Platforms" instance=ExtResource("5_5loy5")]
+offset_left = 372.0
+offset_top = -292.0
+offset_right = 672.0
+offset_bottom = -232.0
+scale = Vector2(0.6, 0.6)
+answer = "cos(11π/6)"
+
+[node name="Platforms" type="Node2D" parent="."]
+
+[node name="Platform2" parent="Platforms" instance=ExtResource("6_l88yk")]
+offset_left = -160.0
+offset_top = 469.0
+offset_right = 140.0
+offset_bottom = 529.0
+scale = Vector2(1, 0.64)
+metadata/_edit_use_anchors_ = true
+
+[node name="Platform3" parent="Platforms" instance=ExtResource("6_l88yk")]
+offset_left = -354.0
+offset_top = -105.0
+offset_right = -54.0
+offset_bottom = -45.0
+scale = Vector2(0.542016, 0.722968)
+
+[node name="Platform14" parent="Platforms" instance=ExtResource("6_l88yk")]
+offset_left = -352.0
+offset_top = -264.0
+offset_right = -52.0
+offset_bottom = -204.0
+scale = Vector2(0.542016, 0.722968)
+
+[node name="Platform11" parent="Platforms" instance=ExtResource("6_l88yk")]
+offset_left = -609.0
+offset_top = 22.0
+offset_right = -309.0
+offset_bottom = 82.0
+scale = Vector2(0.542016, 0.722968)
+
+[node name="Platform6" parent="Platforms" instance=ExtResource("6_l88yk")]
+offset_left = -407.0
+offset_top = 145.0
+offset_right = -107.0
+offset_bottom = 205.0
+scale = Vector2(0.542016, 0.722968)
+
+[node name="Platform10" parent="Platforms" instance=ExtResource("6_l88yk")]
+offset_left = 330.0
+offset_top = -145.0
+offset_right = 630.0
+offset_bottom = -85.0
+scale = Vector2(0.542016, 0.722968)
+
+[node name="Platform7" parent="Platforms" instance=ExtResource("6_l88yk")]
+offset_left = 214.0
+offset_top = 361.0
+offset_right = 514.0
+offset_bottom = 421.0
+scale = Vector2(0.542016, 0.722968)
+
+[node name="Platform8" parent="Platforms" instance=ExtResource("6_l88yk")]
+offset_left = -747.0
+offset_top = 276.0
+offset_right = -447.0
+offset_bottom = 336.0
+scale = Vector2(0.542016, 0.722968)
+
+[node name="Platform9" parent="Platforms" instance=ExtResource("6_l88yk")]
+offset_left = -373.0
+offset_top = 365.0
+offset_right = -73.0
+offset_bottom = 425.0
+scale = Vector2(0.542016, 0.722968)
+
+[node name="Platform4" parent="Platforms" instance=ExtResource("6_l88yk")]
+offset_left = -58.0
+offset_top = 48.0
+offset_right = 242.0
+offset_bottom = 108.0
+scale = Vector2(0.542016, 0.722968)
+
+[node name="Platform5" parent="Platforms" instance=ExtResource("6_l88yk")]
+offset_left = 559.0
+offset_top = 200.0
+offset_right = 859.0
+offset_bottom = 260.0
+scale = Vector2(0.542016, 0.722968)
+
+[node name="Platform12" parent="Platforms" instance=ExtResource("6_l88yk")]
+offset_left = 264.0
+offset_top = 95.0
+offset_right = 564.0
+offset_bottom = 155.0
+scale = Vector2(0.542016, 0.722968)
+
+[node name="Platform13" parent="Platforms" instance=ExtResource("6_l88yk")]
+offset_left = 607.0
+offset_top = -11.0
+offset_right = 907.0
+offset_bottom = 49.0
+scale = Vector2(0.542016, 0.722968)
+
+[node name="Player 1" parent="." instance=ExtResource("7_eg17s")]
+position = Vector2(-64, 416)
+
+[node name="Player 2" parent="." instance=ExtResource("8_auora")]
+position = Vector2(36, 416)
+
+[node name="Respawn Trigger" type="Area2D" parent="."]
+position = Vector2(0, 540)
+script = ExtResource("9_haf4b")
+respawn_pos = Vector2(0, 400)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Respawn Trigger"]
+position = Vector2(0, 540)
+shape = SubResource("WorldBoundaryShape2D_os6yw")
+
+[connection signal="body_entered" from="Respawn Trigger" to="Respawn Trigger" method="_on_body_entered"]

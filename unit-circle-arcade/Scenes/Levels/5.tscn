@@ -1,0 +1,76 @@
+[gd_scene load_steps=12 format=3 uid="uid://c41en7oba4cd8"]
+
+[ext_resource type="Script" uid="uid://gmog2wvq7bgn" path="res://Scripts/Base Classes/game_state.gd" id="1_wv33g"]
+[ext_resource type="FontFile" uid="uid://c2v7745l6gsbi" path="res://Assets/rainyhearts.ttf" id="2_ljv62"]
+[ext_resource type="Script" uid="uid://b3g2bet4qgkor" path="res://Scripts/answer_platforms.gd" id="3_dk6u7"]
+[ext_resource type="PackedScene" uid="uid://12yplci8ufna" path="res://Scenes/Game Elements/wrong_platform.tscn" id="4_agcgy"]
+[ext_resource type="PackedScene" uid="uid://cctls2bd4j6fg" path="res://Scenes/Game Elements/right_platform.tscn" id="5_yroc0"]
+[ext_resource type="PackedScene" uid="uid://qlb0brdob7ra" path="res://Scenes/Game Elements/platform.tscn" id="6_vg65x"]
+[ext_resource type="PackedScene" uid="uid://cv4hdwptyiy1c" path="res://Scenes/Game Elements/player_1.tscn" id="7_a374g"]
+[ext_resource type="PackedScene" uid="uid://culqtwnr4oo01" path="res://Scenes/Game Elements/player_2.tscn" id="8_omira"]
+[ext_resource type="Script" uid="uid://cthe164r500rt" path="res://Scripts/respawn_trigger.gd" id="9_34etg"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_0bxpv"]
+font = ExtResource("2_ljv62")
+font_size = 128
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_os6yw"]
+
+[node name="0 degrees" type="Node2D"]
+script = ExtResource("1_wv33g")
+id = 1
+
+[node name="Label" type="Label" parent="."]
+offset_left = -960.0
+offset_top = -500.0
+offset_right = 960.0
+offset_bottom = -380.0
+text = "sin(13π/6) = ?"
+label_settings = SubResource("LabelSettings_0bxpv")
+horizontal_alignment = 1
+
+[node name="Answer Platforms" type="Node2D" parent="."]
+script = ExtResource("3_dk6u7")
+
+[node name="Wrong Platform4" parent="Answer Platforms" instance=ExtResource("4_agcgy")]
+offset_left = -948.0
+offset_top = 20.0
+offset_right = -648.0
+offset_bottom = 80.0
+scale = Vector2(0.6, 0.6)
+answer = "sin(π/3)"
+
+[node name="Right Platform" parent="Answer Platforms" instance=ExtResource("5_yroc0")]
+offset_left = 766.0
+offset_top = 23.0
+offset_right = 1066.0
+offset_bottom = 83.0
+scale = Vector2(0.6, 0.6)
+answer = "1/2"
+
+[node name="Platforms" type="Node2D" parent="."]
+
+[node name="Platform2" parent="Platforms" instance=ExtResource("6_vg65x")]
+offset_left = -151.0
+offset_top = 14.0
+offset_right = 149.0
+offset_bottom = 74.0
+scale = Vector2(1, 0.64)
+metadata/_edit_use_anchors_ = true
+
+[node name="Player 1" parent="." instance=ExtResource("7_a374g")]
+position = Vector2(-55, -39)
+
+[node name="Player 2" parent="." instance=ExtResource("8_omira")]
+position = Vector2(45, -39)
+
+[node name="Respawn Trigger" type="Area2D" parent="."]
+position = Vector2(0, 540)
+script = ExtResource("9_34etg")
+respawn_pos = Vector2(0, -100)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Respawn Trigger"]
+position = Vector2(0, 540)
+shape = SubResource("WorldBoundaryShape2D_os6yw")
+
+[connection signal="body_entered" from="Respawn Trigger" to="Respawn Trigger" method="_on_body_entered"]
